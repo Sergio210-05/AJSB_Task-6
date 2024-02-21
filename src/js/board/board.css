@@ -28,9 +28,6 @@
   cursor: pointer;
 }
 
-.column__footer {
-}
-
 .column__add-button {
   position: relative;
   padding: 13px 13px 13px 33px;
@@ -63,7 +60,6 @@
 
 .note__grabbed {
   position: absolute;
-  transform: rotate(10deg);
 }
 
 .hidden {

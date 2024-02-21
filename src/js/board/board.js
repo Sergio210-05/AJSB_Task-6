@@ -10,7 +10,7 @@ export default class Board {
     this.container.appendChild(this.columns);
     // this.bindToDOM();
     this.init();
-    return this.columns;
+    // return this.columns;
   }
 
   init() {
@@ -23,6 +23,7 @@ export default class Board {
         e.target.closest(".note").remove();
         return false;
       }
+
       if (e.target.closest(".column__add-button")) {
         e.target.closest(".column__add-button").classList.add("hidden");
         e.target
@@ -31,6 +32,7 @@ export default class Board {
           .classList.remove("hidden");
         return false;
       }
+
       if (e.target.closest(".add-form__close-button")) {
         e.target
           .closest(".column__footer")
@@ -39,6 +41,7 @@ export default class Board {
         e.target.closest(".column__add-form").classList.add("hidden");
         return false;
       }
+
       if (e.target.closest(".add-form__add-button")) {
         const formText = e.target
           .closest(".column__add-form")
@@ -80,39 +83,39 @@ export default class Board {
       }
     });
 
-    this.columns.addEventListener("mousemove", (e) => {
+    this.columns.addEventListener("mousemove", (el) => {
       if (this.current) {
-        e.preventDefault();
+        el.preventDefault();
         this.current.style.top =
-          this.currentTop + e.clientY - this.startY + "px";
+          this.currentTop + el.clientY - this.startY + "px";
         this.current.style.left =
-          this.currentLeft + e.clientX - this.startX + "px";
+          this.currentLeft + el.clientX - this.startX + "px";
         if (
-          e.target.closest(".note") &&
-          !e.target.closest(".note-placeholder")
+          el.target.closest(".note") &&
+          !el.target.closest(".note-placeholder")
         ) {
-          const target = e.target.closest(".note");
+          const target = el.target.closest(".note");
           const { top, height } = target.getBoundingClientRect();
-          if (e.clientY < top + height / 2) {
+          if (el.clientY < top + height / 2) {
             target.before(this.placeholder);
           } else {
             target.after(this.placeholder);
           }
           return;
         }
-        if (e.target.closest(".column__header")) {
+        if (el.target.closest(".column__header")) {
           // console.log("We are here");
           this.placeholder.remove();
-          e.target
+          el.target
             .closest(".column")
             .querySelector(".notes")
             .insertAdjacentElement("afterbegin", this.placeholder);
           return;
         }
-        if (e.target.closest(".column__footer")) {
+        if (el.target.closest(".column__footer")) {
           // console.log("We are here");
           this.placeholder.remove();
-          e.target
+          el.target
             .closest(".column")
             .querySelector(".notes")
             .insertAdjacentElement("beforeend", this.placeholder);
@@ -121,11 +124,11 @@ export default class Board {
       }
     });
 
-    this.columns.addEventListener("mouseover", (e) => {
-      if (this.current) {
-        e.preventDefault();
-      }
-    });
+    // this.columns.addEventListener("mouseover", (el) => {
+    //   if (this.current) {
+    //     el.preventDefault();
+    //   }
+    // });
 
     this.columns.addEventListener("mouseup", () => {
       if (this.current) {
@@ -155,13 +158,10 @@ export default class Board {
   }
 
   saveBeforeExit() {
-    // const board = document.querySelector(".board");
-    // if (!board) return;
+    const board = document.querySelector(".board");
     const columns = [];
 
-    const columnElements = this.querySelectorAll(".column");
-    // console.log(columnElements);
-    // [...columnElements].forEach((column) => {
+    const columnElements = board.querySelectorAll(".column");
     Array.from(columnElements).forEach((column) => {
       const columnTitle = column.querySelector('.column_title');
       const noteElements = column.querySelectorAll(".note");

@@ -38,25 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // container.appendChild(button);
 
   window.addEventListener("beforeunload", () => {
-    // const board = document.querySelector(".board");
-    // if (!board) return;
-    const columns = [];
-
-    const columnElements = board.querySelectorAll(".column");
-    // console.log(columnElements);
-    // [...columnElements].forEach((column) => {
-    Array.from(columnElements).forEach((column) => {
-      const columnTitle = column.querySelector('.column_title');
-      const noteElements = column.querySelectorAll(".note");
-      const notes = [];
-      Array.from(noteElements).forEach((note) => {
-        const noteText = note.querySelector(".note__text");
-        notes.push({ text: noteText.innerText });
-      });
-      columns.push({ title: columnTitle.innerText, notes });
-    });
-
-    localStorage.setItem("storage-data", JSON.stringify( {columns} ));
-    // console.log(localStorage.getItem("storage-data"))
+    board.saveBeforeExit();
   });
 });

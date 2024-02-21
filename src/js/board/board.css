@@ -1,0 +1,71 @@
+.board {
+  background-color: rgb(121, 132, 232);
+  width: 900px;
+  display: flex;
+  padding: 7px;
+  gap: 5px;
+  align-items: flex-start;
+}
+
+.column {
+  background-color: #dee2e5;
+  width: calc((100% - 14px)/3);
+  border-radius: 2px;
+}
+
+.column__header {
+  padding: 13px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.column__menu {
+  background-image: url("./img/menu-vertical-svgrepo-com.svg");
+  background-size: cover;
+  background-position: 100% 0;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.column__footer {
+}
+
+.column__add-button {
+  position: relative;
+  padding: 13px 13px 13px 33px;
+}
+
+.column__add-button:before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 13px;
+  background-image: url("./img/plus-large-svgrepo-com.svg");
+  background-size: cover;
+  background-position: 0 50%;
+}
+
+.column__add-button:hover {
+  background-color: #c3cbcf;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.note {
+  position: relative;
+  background-color: #ffffff;
+  padding: 10px;
+  margin-left: 13px;
+  margin-right: 13px;
+}
+
+.note__grabbed {
+  position: absolute;
+  transform: rotate(10deg);
+}
+
+.hidden {
+  display: none;
+}

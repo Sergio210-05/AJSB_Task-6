@@ -1,0 +1,35 @@
+.column__add-form {
+  padding: 13px 13px 13px 13px;
+}
+
+.add-form__text {
+  width: 100%;
+  padding: 8px;
+  font-size: 1em;
+  rows: 3;
+}
+
+.add-form__footer {
+  display: flex;
+  align-items: center;
+}
+
+.add-form__add-button {
+  padding: 6px 8px;
+  background-color: #5ca84d;
+  color: white;
+  appearance: none;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.add-form__close-button {
+  width: 32px;
+  height: 32px;
+  background-image: url("../board/img/close-svgrepo-com.svg");
+  background-position: center;
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}

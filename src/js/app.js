@@ -2,7 +2,6 @@ import Board from "./board/board";
 
 document.addEventListener("DOMContentLoaded", () => {
   const json = localStorage.getItem("storage-data");
-  // console.log(json);
 
   let data;
   
@@ -17,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { title: "DONE", notes: [] }
       ]
     }
-  };
+  }
 
   const container = document.createElement("div");
   container.classList.add('container');

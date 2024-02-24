@@ -8,9 +8,6 @@ export default class Board {
     this.columns = this.createColumns(data);
     this.current = undefined;
     this.container.appendChild(this.columns);
-    // this.bindToDOM();
-    // this.init();
-    // return this.columns;
 
     this.placeholder = document.createElement("div");
     this.placeholder.classList.add("note");
@@ -99,7 +96,6 @@ export default class Board {
           return;
         }
         if (el.target.closest(".column__header")) {
-          // console.log("We are here");
           this.placeholder.remove();
           el.target
             .closest(".column")
@@ -108,7 +104,6 @@ export default class Board {
           return;
         }
         if (el.target.closest(".column__footer")) {
-          // console.log("We are here");
           this.placeholder.remove();
           el.target
             .closest(".column")
@@ -135,15 +130,10 @@ export default class Board {
   createColumns(data) {
     const result = document.createElement("div");
     result.classList.add("board");
-    // console.log(data)
     data.columns.forEach((column) => {
       new Column(result, column);
     });
     return result;
-  }
-
-  bindToDOM() {
-    this.container.appendChild(this.columns);
   }
 
   saveBeforeExit() {
@@ -163,6 +153,5 @@ export default class Board {
     });
 
     localStorage.setItem("storage-data", JSON.stringify( {columns} ));
-    // console.log(localStorage.getItem("storage-data"))
   }
 }

@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let data;
   
-
   try {
     data = JSON.parse(json);
   } catch (error) {
@@ -24,18 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
   container.classList.add('container');
   document.body.appendChild(container);
 
-  // if (data) {
-  //   new Board(container, data);
-  // } else {
-  //   new Board(container);
-  // }
-  // console.log(data)
   const board = new Board(container, data);
-  // console.log(board)
-  // const button = document.createElement("button");
-  // button.classList.add("button");
-  // button.innerText = "Demo";
-  // container.appendChild(button);
 
   window.addEventListener("beforeunload", () => {
     board.saveBeforeExit();

@@ -20,7 +20,7 @@
 }
 
 .column__menu {
-  background-image: url("./img/menu-vertical-svgrepo-com.svg");
+  background-image: url("./img/menu-vertical.svg");
   background-size: cover;
   background-position: 100% 0;
   width: 20px;
@@ -28,23 +28,23 @@
   cursor: pointer;
 }
 
-.column__add-button {
+.note-add-button {
   position: relative;
   padding: 13px 13px 13px 33px;
 }
 
-.column__add-button:before {
+.note-add-button:before {
   content: "";
   position: absolute;
   width: 20px;
   height: 20px;
   left: 13px;
-  background-image: url("./img/plus-large-svgrepo-com.svg");
+  background-image: url("./img/add.svg");
   background-size: cover;
   background-position: 0 50%;
 }
 
-.column__add-button:hover {
+.note-add-button:hover {
   background-color: #c3cbcf;
   text-decoration: underline;
   cursor: pointer;

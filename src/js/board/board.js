@@ -9,13 +9,11 @@ export default class Board {
     this.current = undefined;
     this.container.appendChild(this.columns);
     // this.bindToDOM();
-    this.init();
+    // this.init();
     // return this.columns;
-  }
 
-  init() {
     this.placeholder = document.createElement("div");
-    this.placeholder.classList.add("note", "note-placeholder");
+    this.placeholder.classList.add("note");
 
     this.columns.addEventListener("click", (e) => {
       e.preventDefault();
@@ -24,11 +22,11 @@ export default class Board {
         return false;
       }
 
-      if (e.target.closest(".column__add-button")) {
-        e.target.closest(".column__add-button").classList.add("hidden");
+      if (e.target.closest(".note-add-button")) {
+        e.target.closest(".note-add-button").classList.add("hidden");
         e.target
           .closest(".column__footer")
-          .querySelector(".column__add-form")
+          .querySelector(".note-add-form")
           .classList.remove("hidden");
         return false;
       }
@@ -36,15 +34,15 @@ export default class Board {
       if (e.target.closest(".add-form__close-button")) {
         e.target
           .closest(".column__footer")
-          .querySelector(".column__add-button")
+          .querySelector(".note-add-button")
           .classList.remove("hidden");
-        e.target.closest(".column__add-form").classList.add("hidden");
+        e.target.closest(".note-add-form").classList.add("hidden");
         return false;
       }
 
       if (e.target.closest(".add-form__add-button")) {
         const formText = e.target
-          .closest(".column__add-form")
+          .closest(".note-add-form")
           .querySelector(".add-form__text");
         const container = e.target.closest(".column").querySelector(".notes");
         if (formText.value !== "") {
@@ -55,9 +53,9 @@ export default class Board {
         formText.value = "";
         e.target
           .closest(".column__footer")
-          .querySelector(".column__add-button")
+          .querySelector(".note-add-button")
           .classList.remove("hidden");
-        e.target.closest(".column__add-form").classList.add("hidden");
+        e.target.closest(".note-add-form").classList.add("hidden");
         return false;
       }
     });
@@ -75,7 +73,7 @@ export default class Board {
         this.current.style.height = height + "px";
         this.placeholder.style.width = width + "px";
         this.placeholder.style.height = height + "px";
-        this.current.classList.add("note__grabbed");
+        this.current.classList.add("note__moving");
         const { top, left } = this.current.getBoundingClientRect();
         this.currentTop = top;
         this.currentLeft = left;
@@ -90,10 +88,7 @@ export default class Board {
           this.currentTop + el.clientY - this.startY + "px";
         this.current.style.left =
           this.currentLeft + el.clientX - this.startX + "px";
-        if (
-          el.target.closest(".note") &&
-          !el.target.closest(".note-placeholder")
-        ) {
+        if (el.target.closest(".note")) {
           const target = el.target.closest(".note");
           const { top, height } = target.getBoundingClientRect();
           if (el.clientY < top + height / 2) {
@@ -124,17 +119,11 @@ export default class Board {
       }
     });
 
-    // this.columns.addEventListener("mouseover", (el) => {
-    //   if (this.current) {
-    //     el.preventDefault();
-    //   }
-    // });
-
     this.columns.addEventListener("mouseup", () => {
       if (this.current) {
         document.body.style.cursor = null;
         document.body.style.pointerEvents = null;
-        this.current.classList.remove("note__grabbed");
+        this.current.classList.remove("note__moving");
         this.current.style.top = null;
         this.current.style.left = null;
         this.placeholder.replaceWith(this.current);

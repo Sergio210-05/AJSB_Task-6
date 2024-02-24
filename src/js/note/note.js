@@ -4,7 +4,7 @@ export default class Note {
   constructor(container, note) {
     this.container = container;
     this.element = Note.createForContent(note);
-    this.bindToDOM();
+    this.container.appendChild(this.element);
   }
 
   static createForContent({ text }) {
@@ -18,9 +18,5 @@ export default class Note {
     this.closeButton.classList.add("note__close-button");
     result.appendChild(this.closeButton);
     return result;
-  }
-
-  bindToDOM() {
-    this.container.appendChild(this.element);
   }
 }

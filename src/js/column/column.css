@@ -1,4 +1,4 @@
-.column__add-form {
+.note-add-form {
   padding: 13px 13px 13px 13px;
 }
 
@@ -27,7 +27,7 @@
 .add-form__close-button {
   width: 32px;
   height: 32px;
-  background-image: url("../board/img/close-svgrepo-com.svg");
+  background-image: url("../board/img/cross-close.svg");
   background-position: center;
   background-size: 16px 16px;
   background-repeat: no-repeat;

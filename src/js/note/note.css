@@ -18,7 +18,7 @@
   transform: scaleX(0) scaleY(0);
   cursor: pointer;
   background-color: #eaedef;
-  background-image: url("../board/img/close-svgrepo-com.svg");
+  background-image: url("../board/img/cross-close.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 16px 16px;
@@ -36,15 +36,15 @@
   margin-top: 8px;
 }
 
-.note__grabbed {
+.note__moving {
   position: absolute;
   z-index: 999;
   pointer-events: none;
 }
 
-.note-placeholder {
+/* .note-placeholder {
   margin-left: 13px;
   margin-right: 13px;
   border-radius: 4px;
   background-color: #eaedef;
-}
+} */

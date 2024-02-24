@@ -4,11 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const json = localStorage.getItem("storage-data");
 
   let data;
-  
-  try {
-    data = JSON.parse(json);
-  } catch (error) {
-    console.log(error);
+
+  if (json == null) {
     data = { 
       columns: [ 
         { title: "TODO", notes: [], }, 
@@ -16,6 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
         { title: "DONE", notes: [] }
       ]
     }
+  } else {
+    data = JSON.parse(json);
   }
 
   const container = document.createElement("div");
